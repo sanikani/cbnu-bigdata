@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member List</title>
+</head>
+<body>
+
+<h2>Member List</h2>
+
+<!-- Search Bar -->
+<form th:action="@{/members}" method="get">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" th:value="${name}" />
+  <label for="age">Age:</label>
+  <input type="text" id="age" name="age" th:value="${age}" />
+  <label for="registrationDate">Registration Date:</label>
+  <input type="text" id="registrationDate" name="registrationDate" th:value="${registrationDate}" />
+  <button type="submit">Search</button>
+</form>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Age</th>
+    <th>Registration Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Loop through members and display each member -->
+  <tr th:each="member : ${members}">
+    <td th:text="${member.name}"></td>
+    <td th:text="${member.phone}"></td>
+    <td th:text="${member.age}"></td>
+    <td th:text="${member.registrationDate}"></td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

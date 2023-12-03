@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Item List</title>
+</head>
+<body>
+
+<h2>Item List</h2>
+
+<!-- Search Bar -->
+<form th:action="@{/items}" method="get">
+  <label for="itemName">Name:</label>
+  <input type="text" id="itemName" name="itemName" th:value="${itemName}" />
+  <label for="price">Price:</label>
+  <input type="text" id="price" name="price" th:value="${price}" />
+  <label for="quantity">Quantity:</label>
+  <input type="text" id="quantity" name="quantity" th:value="${quantity}" />
+  <button type="submit">Search</button>
+</form>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Item Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Brand</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Loop through items and display each item -->
+  <tr th:each="item : ${items}">
+    <td th:text="${item.itemName}"></td>
+    <td th:text="${item.price}"></td>
+    <td th:text="${item.quantity}"></td>
+    <td th:text="${item.brand}"></td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
